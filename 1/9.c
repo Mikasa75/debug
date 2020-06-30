@@ -13,18 +13,25 @@ int main() {
 }
 
 double bisection(int p, int q, double (*func)(int, int, double)) {
-    int a,b,c;
-    a=-20;
-    b=20;
-    c=(a+b)/2;
-    while(f(p,q,c)>=EPSILON){
-        if(f(p,q,a)*f(p,q,c)<0){
-            b=c;
+    double a = -20;
+    double b = 20;
+    double c;
+    c = (a + b) / 2;
+
+    while (fabs(f(p, q, c)) >= EPSILON)
+    {
+        if ((f(p, q, c) * f(p, q, a)) > 0)
+        {
+            a =c;
+            b = b;
+            c = (a + b) / 2;  
         }
-        else{
-            a=c;
+        else
+        {
+            a = a;
+            b = c;
+            c = (a + b) / 2;  
         }
-        c=(a+b)/2.0;
     }
     return c;
 }

@@ -13,25 +13,27 @@ int main() {
 }
 
 double bisection(int p, int q, double (*func)(int, int, double)) {
-    double a = -20.0;
-    double b = 20.0;
-    double x = 0.0;
-    double fa, fb, fx;
-    
-    do {
-        fa = f(p, q, a);
-        fb = f(p, q, b);
-        x = (a + b) / 2.0;
-        fx = f(p, q, x);
-        
-        if (fa > 0 && fx > 0) {
-            a = x;
-        } else{
-            b = x;
+    double a = -20;
+    double b = 20;
+    double c;
+    c = (a + b) / 2;
+
+    while (fabs(f(p, q, c)) >= EPSILON)
+    {
+        if ((f(p, q, c) * f(p, q, a)) > 0)
+        {
+            a =c;
+            b = b;
+            c = (a + b) / 2;  
         }
-    } while (fx >= EPSILON);
-    
-    return x;
+        else
+        {
+            a = a;
+            b = c;
+            c = (a + b) / 2;  
+        }
+    }
+    return c;
 }
 
 double f(int p, int q, double x) {
