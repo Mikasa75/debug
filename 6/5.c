@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-int main() {
+
+int main()
+{
     char input[4];
     int initial = 1;
     int counter = 0;
@@ -8,13 +10,13 @@ int main() {
     scanf("%s", input);
     char operation[3];
      
-    if (input[0] == 'r' && input[1] == 'w' && input[2] == 'x') {
+    if (input[0]=='r' && input[1]=='w' && input[2]=='x') {
         counter = 7;
-    } else if (input[0] == 'r' && input[1] == 'w') {
+    } else if (input[0]=='r' && input[1]=='w') {
         counter = 6;
-    } else if (input[0] == 'r' && input[1] == 'x') {
+    } else if (input[0]=='r' && input[1]=='x') {
         counter = 5;
-    } else if (input[0] == 'w' && input[1] == 'x') {
+    } else if (input[0]=='w' && input[1]=='x') {
         counter = 3;
     } else if (input[0] == 'r') {
         counter = 4;
@@ -25,15 +27,15 @@ int main() {
     }
     
     while (scanf("%s", operation) != EOF) {
-        if (operation[1] == '+' && operation[1] == 'r') {
+        if (operation[0]=='+' && operation[1]=='r') {
             counter += 4;
-        } else if (operation[1] == '+' && operation[1] == 'w') {
+        } else if (operation[0]=='+' && operation[1]=='w') {
             counter += 2;
-        } else if (operation[1] == '+' && operation[1] == 'x') {
+        } else if (operation[0]=='+' && operation[1]=='x') {
             counter += 1;   
-        } else if (operation[1] == '-' && operation[1] == 'r') {
+        } else if (operation[0]=='-' && operation[1]=='r') {
             counter -= 4; 
-        } else if (operation[1] == '-' && operation[1] == 'w') {
+        } else if (operation[0]=='-' && operation[1]=='w') {
             counter -= 2;
         } else {
             counter -= 1;
