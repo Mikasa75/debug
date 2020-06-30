@@ -9,7 +9,7 @@ int main()
         return 0;
     }
     printf("2\n");
-    for (i=3; i<=n; i+=2) ;
+    for (i=3; i<=n; i+=2) {
         for (j=3; j<=i; j+=2) {
             if (i%j==0 && i!=j) {
                 break;

@@ -4,11 +4,11 @@
 
 int main()
 {
-    float r;
-    scanf("%f", &r);
+    double r;
+    scanf("%lf", &r);
     
-    printf("%.3f\n", PI * r * 2);
-    printf("%.3f", PI * r * r);
+    printf("%.3lf\n", PI * r * 2);
+    printf("%.3lf", PI * r * r);
     
     return 0;
 }

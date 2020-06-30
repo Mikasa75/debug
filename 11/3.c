@@ -5,16 +5,14 @@ int main()
 {
     int arr[32];
     memset(arr, 0, sizeof(arr));
-    char n;    
-    int i = 1;
+    char n[500];    
+    int i;
 
-    while (1) {
-    	scanf("%c",&n);
-        if(n == '\n'){
-           break;
-        }
-        arr[i % 32] += (int)n;
-        i++;
+    gets(n);
+    int l = strlen(n);
+	
+    for (i=0; i<=l; i++) {
+        arr[(i+1) % 32] += (int)n[i];
     }
 
     int bits[32];
@@ -22,7 +20,7 @@ int main()
     for (j=0; j<32; j++) {
         bits[j] = arr[31 - j] ^ arr[j] << 1;
     }
-     for (j=0; j<32; j++) {
+    for (j=0; j<32; j++) {
         int d = bits[j] % 85 + 34;
         char t = (char)d; 
         printf("%c", t);

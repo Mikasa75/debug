@@ -3,19 +3,17 @@
 
 int main()
 {
-    char arr[32] = {0};
+    int arr[32] = {0};
     int bits[32];
     char result[33];
-    char input;
+    char input[500];
     int i, j = 1;
     
-    while (1) {
-    	scanf("%c", &input);
-        if (input == '\n') {
-            break;
-        }
-        arr[j % 32] += input;
-        j++;
+    gets(input);
+    int l = strlen(input);
+	
+    for (i=0; i<=l; i++) {
+        arr[(i+1) % 32] += (int)input[i];
     }
     
     for (i=0; i<32; i++) {
