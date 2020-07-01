@@ -1,50 +1,44 @@
 #include <stdio.h>
-
+#include <string.h>
 int main() {
     int matrix_a[10][10];
     int matrix_b[10][10];
-    int matrix_result[15][15];
     int m;
     int n;
-    scanf("%d %d", &m, &n);
-    
     int mIndex;
     int nIndex;
-    int j;
-    
-    for(mIndex = 0; mIndex < m; mIndex ++){
-        for(nIndex = 0; nIndex < n; nIndex ++){
+    scanf("%d %d", &m, &n);
+    for ( mIndex = 0; mIndex < m; mIndex++) {
+        for (nIndex = 0; nIndex < n; nIndex++) {
             scanf("%d", &matrix_a[mIndex][nIndex]);
         }
     }
-    for(nIndex = 0; nIndex < n; nIndex ++){
-        for(mIndex = 0; mIndex < m; mIndex ++){
-            scanf("%d", &matrix_b[nIndex][mIndex]);
+    for (mIndex = 0; mIndex < n; mIndex++) {
+        for (nIndex = 0; nIndex < m; nIndex++) {
+            scanf("%d", &matrix_b[mIndex][nIndex]);
         }
     }
-    
-    for(mIndex = 0; mIndex < m; mIndex ++){
-        for(nIndex = 0; nIndex < n; nIndex ++){
-            for(j = 0; j < n + 1; j ++){
-                matrix_result[mIndex][nIndex] += matrix_a[mIndex][j] * matrix_b[j][nIndex];
+
+    int m3[10][10];
+    memset(m3, 0, sizeof(int) * 10 * 10);
+
+ 
+    for (mIndex = 0; mIndex < m; mIndex++) {
+        for (nIndex = 0; nIndex < m; nIndex++) {
+            for (int k = 0; k < n; k++) {
+                m3[mIndex][nIndex] += matrix_a[mIndex][k] * matrix_b[k][nIndex];
             }
-            
         }
     }
-    
-    
-    for(mIndex = 0; mIndex < m; mIndex ++){
-        for(nIndex = 0; nIndex < m; nIndex ++){
-            printf("%d", matrix_result[mIndex][nIndex]);
-            if(nIndex == m - 1 && mIndex != m - 1){
-                printf("\n");
-            }else if(mIndex != m ){
+    for (mIndex = 0; mIndex < m; mIndex++) {
+        for (nIndex = 0; nIndex < m; nIndex++) {
+            printf("%d", m3[mIndex][nIndex]);
+            if (nIndex != m - 1) {
                 printf(" ");
             }
-            
         }
+        printf("\n");
     }
-    
-    
+
     return 0;
 }
