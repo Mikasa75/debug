@@ -1,35 +1,39 @@
-#include <stdio.h>
-
-void swap(int a, int b) {
-    int c;
-    if(a <= b){
-        c = a;
-        a = b;
-        b = c;
-    }
+#include<stdio.h>
+void swap(int* a, int* b) {
+	int *c=0;	
+	c = a;
+	a = b;
+	b = c;
 }
 
 int main() {
-    int n = 10;
-    int m;
-    int numbers[10];
-    int i;
-    
-    // ¶ÁÈë¸ø¶¨µÄÊı×Ö
-    for (i = 0; i < n; i++) {
-        scanf("%d", &numbers[i]);
-    }
-    for (i = 0; i < n; i++) {
-        for(int j = 0; j < n - 1; j++) {
-            swap(numbers[j], numbers[j + 1]);
-        }
-    }
-    for (int i = 0; i < n; i++) {
-        printf("%d", numbers[i]);
-        if(i != n - 1) printf(" ");
-    }
-    
+	int n = 10;
+	int m;
+	int numbers[10];
+	int i;
+	int tmpt = 0;
+	// ¿¿¿¿¿¿¿
+	for (i = 0; i < n; i++) {
+		scanf("%d", &numbers[i]);
+	}
 
+	for (i = 0; i <= 9; i++) {
+		for (m = i + 1; m <= 9; m++) {
+			if (numbers[i] > numbers[m]) {
+				swap(&numbers[i], &numbers[m]);
+				tmpt = numbers[i];
+				numbers[i] = numbers[m];
+				numbers[m] = tmpt;
+			}
+		}
+	}
 
-    return 0;
+	for (i = 9; i >= 0; i--)
+	{
+		printf("%d", numbers[i]);
+		if (i != 0) {
+			printf(" ");
+		}
+	}
+	return 0;
 }
