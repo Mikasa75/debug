@@ -11,6 +11,18 @@ void count_off(Node *head, int n, int k, int m);
 int main() {
     int n, k, m;
     scanf("%d%d%d", &n, &k, &m);
+     scanf("%d%d%d", &n, &k, &m);
+    if (m == 1)
+    {
+        int a = k;
+        for (int i = 0; i <= (n - k); i++)
+        {
+            printf("%d", a);
+            a++;
+            printf(" ");
+        }
+        exit(0);
+    }
     Node *head = circle_create(n);
     count_off(head, n, k, m);
     return 0;
@@ -20,12 +32,12 @@ Node *circle_create(int n) {
     Node *temp, *new_node, *head;
     int i;
 
-    // ´´½¨µÚÒ»¸öÁ´±í½Úµã²¢¼ÓÊý¾Ý
+    // ¿¿¿¿¿¿¿¿¿¿¿¿¿
     temp = (Node *) malloc(sizeof(Node));
     head = temp;
     head->data = 1;
 
-    // ´´½¨µÚ 2 µ½µÚ n ¸öÁ´±í½Úµã²¢¼ÓÊý¾Ý
+    // ¿¿¿ 2 ¿¿ n ¿¿¿¿¿¿¿¿¿
     for(i = 2; i <= n; i++) {
         new_node = (Node *) malloc(sizeof(Node));
         new_node->data = i;
@@ -33,7 +45,7 @@ Node *circle_create(int n) {
         temp = new_node;
     }
 
-    // ×îºóÒ»¸ö½ÚµãÖ¸ÏòÍ·²¿¹¹³ÉÑ­»·Á´±í
+    // ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿
     temp->next = head;
 
     return head;
