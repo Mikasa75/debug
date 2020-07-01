@@ -1,30 +1,26 @@
 #include <stdio.h>
 #include <string.h>
-
-int main()
-{
+int main() {
     int n;
     scanf("%d\n", &n);
-
-    int i, j;
-    char name[n][101];
+    char name[n][100];
     char temp[100];
-    for (i=0; i<n; i++) {
+    
+
+    for(int i = 0; i < n; i++){
         gets(name[i]);        
     }
-    
-    for (j=0; j<n; j++) {
-        for (i=0; i<=n-j; i++) {
+ 
+    for (int j = 0; j < n; j++){
+        for (int k = 0; k <= n - j; k++){
             char temp[20];
-            if((strlen(name[i]) < strlen(name[i + 1]))) {
-                strcpy(temp, name[i]);
-                strcpy(name[i], name[i + 1]);
-                strcpy(name[i + 1], temp);
+            if((strlen(name[k]) < strlen(name[k + 1]))){
+                strcpy(temp, name[k]);
+                strcpy(name[k], name[k + 1]);
+                strcpy(name[k + 1], temp);
             }
         }
     }
-    
-    printf("%s", name[0]);
-    
+    printf("%s\n", name[0]);
     return 0;
 }
