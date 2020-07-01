@@ -6,21 +6,58 @@ int main() {
     i = 0;
     int j;
     //int num = 0;
-    int a;//ÎÄ¼ş±¾À´µÄÈ¨ÏŞÖµ
+    int a;//¿¿¿¿¿¿¿¿
     a = 0;
     int b;
     b = 0;
     int c;
     c = 0;
-    
-    //ÊäÈëµ±Ç°ÎÄ¼şÈ¨ÏŞ
+       char string[4];
+    scanf("%s",string);
+    int current = 0;
+    for (int i = 0; i < 3; i++) {
+        if (string[i] == 'r') {
+            current += 2 * 2;
+        }
+        else if (string[i] == 'w') {
+            current += 2;
+        }
+        else if (string[i] == 'x') {
+            current += 1;
+        }
+    }
+   
+    char reqrmt[3];
+    int req = 0;
+    while (scanf("%s", reqrmt) != EOF) {
+        if (reqrmt[1] == 'r') {
+            req = 2 * 2;
+        }
+        else if (reqrmt[1] == 'w') {
+            req = 2;
+        }
+        else {
+            req = 1;
+        }
+        if (reqrmt[0] == '+') {
+            current = current | req;
+        }
+        else {
+            current = current & (~req);
+        }
+      
+    }
+
+    printf("%d\n", current);
+    return 0;
+    //¿¿¿¿¿¿¿¿
     scanf("%s\n", pms);
     //printf("%s", pms);
-    //ÊäÈëÌí¼Ó»òÕßÉ¾³ıµÄÎÄ¼şÈ¨ÏŞ
+    //¿¿¿¿¿¿¿¿¿¿¿¿¿
     while (scanf("%s\n",change_pms[i++]) != EOF) {
         scanf("%s\n",change_pms[i++]); 
     }
-    //ÅĞ¶ÏÔ­ÎÄ¼şµÄÈ¨ÏŞ£¬ÓÃÊ®½øÖÆ±íÊ¾
+    //¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿
     for (i = 0; i < strlen(pms); i++) {
         if (pms[i] == 'r') {
             a += 4;
