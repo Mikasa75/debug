@@ -1,36 +1,36 @@
-#include <stdio.h>
+#include<stdio.h>
+
 
 int main() {
-    int n = 10;
-    int m;
-    int numbers[10];
-    int i;
-    int max;
-    int k;
-    int j;
-    int o;
-    // ¶ÁÈë¸ø¶¨µÄÊı×Ö
-    for (i = 0; i < n; i++) {
-        scanf("%d", &numbers[i]);
-    }
-    for (j = 0; j < n; j++) {
-        for(k = j; k < n - 1; k++){
-            if(numbers[k] < numbers[k+1]){
-                m = k + 1;
-            }
-           
-        }
-        o = numbers[j];
-        numbers[j] = numbers[m];
-        numbers[m] = o;
-    }
-    for (int q = 0; q < n; q++) {
-        if (q == 9) {
-            printf("%d", numbers[q]);
-        } else {
-            printf("%d ", numbers[q]);
-        }
-    }
+	int n = 10;
+	int m;
+	int numbers[10];
+	int i;
+	int max;
+	int j;
+	int tmpt = 0;
+	int o;
+	// ¿¿¿¿¿¿¿
+	for (i = 0; i < n; i++) {
+		scanf("%d", &numbers[i]);
+	}
 
-    return 0;
+	for (i = 0; i < 10; i++) {
+		for (j = i + 1; j < 10; j++) {
+			if (numbers[i] > numbers[j]) {
+				tmpt = numbers[i];
+				numbers[i] = numbers[j];
+				numbers[j] = tmpt;
+			}
+		}
+	}
+
+	for (i = 9; i >= 0; i--)
+	{
+		printf("%d", numbers[i]);
+		if (i != 0) {
+			printf(" ");
+		}
+	}
+	return 0;
 }
