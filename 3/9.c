@@ -1,99 +1,75 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
     int matrix[100][100];
-    int m;
-    int n;
+    int m, n;
     int nIndex;
     int mIndex;
     int matrixpass[110][110];
     int orientation = 0;
-    int i;
-    int j;
+    scanf("%d %d", &m, &n);
+    int k = m * n;
+    int m0 = m;
+    int n0 = n;
+    int i, j;
     int times;
     int p = 0;
-    //输入参数
-    scanf("%d %d", &m, &n);
-    for(i = 0; i < m; i++){
-        for(j = 0; j < n; j++){
+
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < n; j++) {
             scanf("%d", &matrix[i][j]);
         }
     }
-    //计数清零
-    int k;
-    int l;
-    k = m;
-    l = n;
-    times = 0;
-    mIndex = 0;
-    nIndex = 0;
-    for(i = 0; i < 110; i++){
-        for(j = 0; j < 110; j++){
-            matrixpass[i][j] = 0;
+    if (m == 1 || n == 1) {
+        for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+                printf("%d", matrix[i][j]);
+                if (j != n - 1) printf(" ");
+            }
+            if (i != m - 1) printf(" ");
         }
+        return 0;
     }
-    if(times <= m * n){
-        for(i = 0; i < 6; i++){
-        if(orientation % 4 == 0){  //right
-            while(matrixpass[mIndex][nIndex] == 0 && nIndex <= l - 1){
-                printf("%d", matrix[mIndex][nIndex]);
-                matrixpass[mIndex][nIndex] = 1;
-                nIndex++;
-                times++;
-                if(times != m * n){
-                    printf(" ");
-                }
-            }
-            orientation++;
-            mIndex++;
-            nIndex--;  
+
+    i = 0;
+    while (i != k) {
+        for (j = n - n0; j < n0 - 1; j++) {
+            printf("%d", matrix[m - m0][j]);
+            i++;
+            if (i == k)
+                break;
+            else
+                printf(" ");
         }
-        if(orientation % 4 == 1){  //down
-            while(matrixpass[mIndex][nIndex] == 0 && mIndex <= k - 1){
-                printf("%d", matrix[mIndex][nIndex]);
-                matrixpass[mIndex][nIndex] = 1;
-                mIndex++;
-                times++;
-                if(times != m * n){
-                    printf(" ");
-                }
-            }
-            orientation++;
-            mIndex--;
-            nIndex--;
+        for (j = m - m0; j < m0 - 1; j++) {
+            printf("%d", matrix[j][n0 - 1]);
+            i++;
+            if (i == k)
+                break;
+            else
+                printf(" ");
         }
-        if(orientation % 4 == 2){  //left
-            while(matrixpass[mIndex][nIndex] == 0 && nIndex >= p){
-                printf("%d", matrix[mIndex][nIndex]);
-                matrixpass[mIndex][nIndex] = 1;
-                nIndex--;
-                times++;
-                if(times != m * n){
-                    printf(" ");
-                }
-            }
-            orientation++;
-            mIndex--;
-            nIndex++;  
+        for (j = n0 - 1; j > n - n0; j--) {
+            printf("%d", matrix[m0 - 1][j]);
+            i++;
+            if (i == k)
+                break;
+            else
+                printf(" ");
         }
-        if(orientation % 4 == 3){  //up
-            while(matrixpass[mIndex][nIndex] == 0 && mIndex >= p + 1){
-                printf("%d", matrix[mIndex][nIndex]);
-                matrixpass[mIndex][nIndex] = 1;
-                mIndex--;
-                times++;
-                if(times != m * n){
-                    printf(" ");
-                }
-            }
-            orientation++;
-            mIndex++;
-            nIndex++;  
+        for (j = m0 - 1; j > m - m0; j--) {
+            printf("%d", matrix[j][n - n0]);
+            i++;
+            if (i == k)
+                break;
+            else
+                printf(" ");
         }
-        k--;
-        l--;
-        p++;
-      }
+        n0--;
+        m0--;
     }
+
     return 0;
 }
+
