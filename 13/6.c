@@ -20,12 +20,12 @@ Node *circle_create(int n) {
     Node *temp, *new_node, *head;
     int i;
 
-    // ´´½¨µÚÒ»¸öÁ´±í½Úµã²¢¼ÓÊý¾Ý
+    // ¿¿¿¿¿¿¿¿¿¿¿¿¿
     temp = (Node *) malloc(sizeof(Node));
     head = temp;
     head->data = 1;
 
-    // ´´½¨µÚ 2 µ½µÚ n ¸öÁ´±í½Úµã²¢¼ÓÊý¾Ý
+    // ¿¿¿ 2 ¿¿ n ¿¿¿¿¿¿¿¿¿
     for(i = 2; i <= n; i++) {
         new_node = (Node *) malloc(sizeof(Node));
         new_node->data = i;
@@ -33,47 +33,38 @@ Node *circle_create(int n) {
         temp = new_node;
     }
 
-    // ×îºóÒ»¸ö½ÚµãÖ¸ÏòÍ·²¿¹¹³ÉÑ­»·Á´±í
+    // ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿
     temp->next = head;
 
     return head;
 }
 
 void count_off(Node *head, int n, int k, int m) {
-   Node *temp, *pre;
-    int i;
-    int times;
-    times = 1;
+    int counter = 0;
+    int i, j;
+    Node *temp, *flag;
     temp = head;
-    pre = head;
-    
-    for(i = 1; i < k - 1 ; i++){
-        pre = pre->next;
-    }
-    
-    for(i = 1; i < k; i++){
-        pre = temp;
+    while (counter < k - 1) {
         temp = temp->next;
+        counter++;
+    } 
+    //printf("temp->data = %d\n", temp->data);
+    if (m != 1) {
+    for (j = 0; j < n; j++) {
+        for (i = 0; i < m - 1; i++) {
+            if (i == m - 2) {
+                flag = temp;
+            }
+            temp = temp->next;
+        } 
+        printf("%d ", temp->data);
+        flag->next = temp->next;
+    	temp = temp->next;
     }
-
-    i = 1;
-    
-    while(times <= n){
-      if(i == m){
-        printf("%d", temp->data);
-        times++;
-        pre->next = pre->next->next;
-        temp = pre;
-        i = 1;
-         if(times != 1){
-             printf(" ");
-         }
+    } else {
+        for (i = 1; i <= n; i++) {
+            printf("%d ", i);
+        }
     }
-        pre = temp;
-        temp = temp->next;
-        i++;
-    }
-    
-    
     return;
 }
