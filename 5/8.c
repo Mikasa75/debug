@@ -4,15 +4,10 @@ int main() {
     char string[10][21];
     char str[21];
     int i, j;
-    for(i = 0; i < 10; i++){
-        for(j = 0; j < 21; j++){
-            scanf("%c", &string[i][j]);
-            if(string[i][j] = '\n'){
-                string[i][j] = '\0';
-                break;
-            }
-        }
+     for (i = 0; i < 10; i++) {
+        scanf("%s", string[i]);
     }
+
     for (i = 0; i < 9; i++){
         for (j = 0; j <= 9-i; j++){
             if (strcmp(string[j+1], string[j]) > 0){
@@ -22,16 +17,13 @@ int main() {
             }
         }
     }
-    for (i = 0; i < 10; i++){
-        for (j = 0; j < 21; j++){
-            if (string[i][j] == '\0'){
-                printf ("\n");
-                break;
-            }
-            else{
-                printf ("%c", string[i][j]);
-            }
+     int m;
+    for (m = 9; m >= 0; m--) {
+        printf("%s ", string[m]);
+        if (m != 9) {
+            printf(" \n");
         }
+
     }
     return 0;
 }

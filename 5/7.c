@@ -1,29 +1,39 @@
 #include <stdio.h>
 #include <string.h>
-void swap (char **b, char **c) {
-    char* temp=(char *)malloc(31);
-    temp = *b;
-    *b= *c;
-    *c = temp;
+void swap(char* a, char* b) {
+    char temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
 int main() {
-    char name[20][31];
     int i;
     int j;
-    int m = 10;
-    for (i = 0; i < m; i++) {
-        scanf("%s", name[i]);    
+    int k;
+    int l;
+    char name[10][21];
+    char temp;
+    for (i = 0; i < 10; i++) {
+        scanf("%s", name[i]);
     }
-    for (j = 0; j < m; j++) {
-        for (i = 0; i <m-j-1; i ++) {
-            if(strcmp(name[i], name[i + 1]) > 0){ 
-                    swap(&name[i], &name[i + 1]);    
+    for (j = 0; j < 10; j++) {
+        for (k = 0; k < 9 - j; k++) {
+            if (strcmp(name[k], name[k + 1]) >= 0) {
+                for (l = 0; l < 20; l++) {
+                    swap(&name[k][l], &name[k + 1][l]);
+                }
             }
         }
     }
-    for (i = 0; i < m; i++) {
-        printf("%s\n", name[i]);    
+    int m;
+    for (m = 0; m < 10; m++) {
+        printf("%s ", name[m]);
+        if (m != 9) {
+            printf(" \n");
+        }
+
     }
+
     return 0;
 }
 
